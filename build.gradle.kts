@@ -32,23 +32,3 @@ tasks.withType<ShadowJar> {
     destinationDirectory.set(file("$rootDir/output"))
     mergeServiceFiles()
 }
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-            artifact(tasks["shadowJar"])
-        }
-    }
-
-    repositories {
-        maven {
-            url = uri("https://maven.blakesmods.com")
-
-            credentials {
-                username = System.getenv("BLAKESMODS_MAVEN_USERNAME")
-                password = System.getenv("BLAKESMODS_MAVEN_PASSWORD")
-            }
-        }
-    }
-}
