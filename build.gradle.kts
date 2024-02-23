@@ -1,14 +1,14 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version "1.9.0"
     application
-    id("com.github.johnrengelman.shadow") version "7.1.1"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     id("maven-publish")
 }
 
 group = "com.blakesmods"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -16,11 +16,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.reposilite:reposilite:3.3.1")
-}
-
-kotlin {
-    jvmToolchain(11)
+    compileOnly("com.reposilite:reposilite:3.5.6")
 }
 
 application {

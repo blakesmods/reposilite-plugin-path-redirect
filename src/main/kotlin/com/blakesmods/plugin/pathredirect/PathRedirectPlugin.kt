@@ -31,9 +31,11 @@ class PathRedirectPlugin : ReposilitePlugin() {
         }
 
         event { event: HttpServerInitializationEvent ->
-            redirects.forEach {
-                event.javalin.before(it.from) { ctx ->
-                    ctx.redirect(it.to + ctx.uri())
+            redirects.forEach { redirect ->
+                event.config.router.mount {
+                    it.before(redirect.from) { ctx ->
+                        ctx.redirect(redirect.to + ctx.uri())
+                    }
                 }
             }
         }
